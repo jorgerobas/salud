@@ -1,0 +1,795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="consultoriosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ciudades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="denominacion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="consultas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="precio" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fecha" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="medico_Id" Type="int" Nullable="false" />
+          <Property Name="tipo_consulta_Id" Type="int" Nullable="false" />
+          <Property Name="paciente_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="datos_contactos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email_primario" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email_secundario" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tel_celular" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tel_fijo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="persona_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="direcciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="calle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="numero" Type="smallint" />
+          <Property Name="piso" Type="nvarchar(max)" />
+          <Property Name="dpto" Type="smallint" />
+          <Property Name="ciudad_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="especialidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="denominacion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="medicoespecialidad">
+          <Key>
+            <PropertyRef Name="medico_Id" />
+            <PropertyRef Name="especialidad_Id" />
+          </Key>
+          <Property Name="medico_Id" Type="int" Nullable="false" />
+          <Property Name="especialidad_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="obras_sociales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="denominacion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="plus" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personaobra_social">
+          <Key>
+            <PropertyRef Name="persona_Id" />
+            <PropertyRef Name="obra_social_Id" />
+          </Key>
+          <Property Name="persona_Id" Type="int" Nullable="false" />
+          <Property Name="obra_social_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dni" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="personas_medico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="matricula" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personas_paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tipos_consultas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="precio" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tipo_usuario" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_direccionciudad">
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="1" />
+          <End Role="direcciones" Type="Self.direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="direcciones">
+              <PropertyRef Name="ciudad_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_medico_inherits_persona">
+          <End Role="personas" Type="Self.personas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="personas_medico" Type="Self.personas_medico" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personas_medico">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_medicoconsulta">
+          <End Role="personas_medico" Type="Self.personas_medico" Multiplicity="1" />
+          <End Role="consultas" Type="Self.consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas_medico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="consultas">
+              <PropertyRef Name="medico_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_medicoespecialidad_especialidad">
+          <End Role="especialidades" Type="Self.especialidades" Multiplicity="1" />
+          <End Role="medicoespecialidad" Type="Self.medicoespecialidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="especialidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="medicoespecialidad">
+              <PropertyRef Name="especialidad_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_medicoespecialidad_medico">
+          <End Role="personas_medico" Type="Self.personas_medico" Multiplicity="1" />
+          <End Role="medicoespecialidad" Type="Self.medicoespecialidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas_medico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="medicoespecialidad">
+              <PropertyRef Name="medico_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_paciente_inherits_persona">
+          <End Role="personas" Type="Self.personas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="personas_paciente" Type="Self.personas_paciente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personas_paciente">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pacienteconsulta">
+          <End Role="personas_paciente" Type="Self.personas_paciente" Multiplicity="1" />
+          <End Role="consultas" Type="Self.consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas_paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="consultas">
+              <PropertyRef Name="paciente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personadatos_contacto">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="datos_contactos" Type="Self.datos_contactos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="datos_contactos">
+              <PropertyRef Name="persona_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personadireccion">
+          <End Role="direcciones" Type="Self.direcciones" Multiplicity="0..1" />
+          <End Role="personas" Type="Self.personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="direcciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personas">
+              <PropertyRef Name="direccion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personaobra_social_obra_social">
+          <End Role="obras_sociales" Type="Self.obras_sociales" Multiplicity="1" />
+          <End Role="personaobra_social" Type="Self.personaobra_social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="obras_sociales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personaobra_social">
+              <PropertyRef Name="obra_social_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personaobra_social_persona">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="personaobra_social" Type="Self.personaobra_social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personaobra_social">
+              <PropertyRef Name="persona_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tipo_consultaconsulta">
+          <End Role="tipos_consultas" Type="Self.tipos_consultas" Multiplicity="1" />
+          <End Role="consultas" Type="Self.consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipos_consultas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="consultas">
+              <PropertyRef Name="tipo_consulta_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="consultoriosModelStoreContainer">
+          <EntitySet Name="ciudades" EntityType="Self.ciudades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="consultas" EntityType="Self.consultas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="datos_contactos" EntityType="Self.datos_contactos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="direcciones" EntityType="Self.direcciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="especialidades" EntityType="Self.especialidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="medicoespecialidad" EntityType="Self.medicoespecialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="obras_sociales" EntityType="Self.obras_sociales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personaobra_social" EntityType="Self.personaobra_social" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personas" EntityType="Self.personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personas_medico" EntityType="Self.personas_medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personas_paciente" EntityType="Self.personas_paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipos_consultas" EntityType="Self.tipos_consultas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_direccionciudad" Association="Self.FK_direccionciudad">
+            <End Role="ciudades" EntitySet="ciudades" />
+            <End Role="direcciones" EntitySet="direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_medico_inherits_persona" Association="Self.FK_medico_inherits_persona">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="personas_medico" EntitySet="personas_medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_medicoconsulta" Association="Self.FK_medicoconsulta">
+            <End Role="personas_medico" EntitySet="personas_medico" />
+            <End Role="consultas" EntitySet="consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_medicoespecialidad_especialidad" Association="Self.FK_medicoespecialidad_especialidad">
+            <End Role="especialidades" EntitySet="especialidades" />
+            <End Role="medicoespecialidad" EntitySet="medicoespecialidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_medicoespecialidad_medico" Association="Self.FK_medicoespecialidad_medico">
+            <End Role="personas_medico" EntitySet="personas_medico" />
+            <End Role="medicoespecialidad" EntitySet="medicoespecialidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_paciente_inherits_persona" Association="Self.FK_paciente_inherits_persona">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="personas_paciente" EntitySet="personas_paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pacienteconsulta" Association="Self.FK_pacienteconsulta">
+            <End Role="personas_paciente" EntitySet="personas_paciente" />
+            <End Role="consultas" EntitySet="consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personadatos_contacto" Association="Self.FK_personadatos_contacto">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="datos_contactos" EntitySet="datos_contactos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personadireccion" Association="Self.FK_personadireccion">
+            <End Role="direcciones" EntitySet="direcciones" />
+            <End Role="personas" EntitySet="personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personaobra_social_obra_social" Association="Self.FK_personaobra_social_obra_social">
+            <End Role="obras_sociales" EntitySet="obras_sociales" />
+            <End Role="personaobra_social" EntitySet="personaobra_social" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personaobra_social_persona" Association="Self.FK_personaobra_social_persona">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="personaobra_social" EntitySet="personaobra_social" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tipo_consultaconsulta" Association="Self.FK_tipo_consultaconsulta">
+            <End Role="tipos_consultas" EntitySet="tipos_consultas" />
+            <End Role="consultas" EntitySet="consultas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="consultoriosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ciudades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="denominacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="direcciones" Relationship="Self.FK_direccionciudad" FromRole="ciudades" ToRole="direcciones" />
+        </EntityType>
+        <EntityType Name="consultas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="precio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="medico_Id" Type="Int32" Nullable="false" />
+          <Property Name="tipo_consulta_Id" Type="Int32" Nullable="false" />
+          <Property Name="paciente_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="personas_medico" Relationship="Self.FK_medicoconsulta" FromRole="consultas" ToRole="personas_medico" />
+          <NavigationProperty Name="personas_paciente" Relationship="Self.FK_pacienteconsulta" FromRole="consultas" ToRole="personas_paciente" />
+          <NavigationProperty Name="tipos_consultas" Relationship="Self.FK_tipo_consultaconsulta" FromRole="consultas" ToRole="tipos_consultas" />
+        </EntityType>
+        <EntityType Name="datos_contactos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email_primario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email_secundario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel_celular" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel_fijo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="persona_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="personas" Relationship="Self.FK_personadatos_contacto" FromRole="datos_contactos" ToRole="personas" />
+        </EntityType>
+        <EntityType Name="direcciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="calle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="numero" Type="Int16" />
+          <Property Name="piso" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dpto" Type="Int16" />
+          <Property Name="ciudad_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ciudades" Relationship="Self.FK_direccionciudad" FromRole="direcciones" ToRole="ciudades" />
+          <NavigationProperty Name="personas" Relationship="Self.FK_personadireccion" FromRole="direcciones" ToRole="personas" />
+        </EntityType>
+        <EntityType Name="especialidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="denominacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="personas_medico" Relationship="Self.medicoespecialidad" FromRole="especialidades" ToRole="personas_medico" />
+        </EntityType>
+        <EntityType Name="obras_sociales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="denominacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="plus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="personas" Relationship="Self.personaobra_social" FromRole="obras_sociales" ToRole="personas" />
+        </EntityType>
+        <EntityType Name="personas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dni" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion_Id" Type="Int32" />
+          <NavigationProperty Name="datos_contactos" Relationship="Self.FK_personadatos_contacto" FromRole="personas" ToRole="datos_contactos" />
+          <NavigationProperty Name="direcciones" Relationship="Self.FK_personadireccion" FromRole="personas" ToRole="direcciones" />
+          <NavigationProperty Name="personas_medico" Relationship="Self.FK_medico_inherits_persona" FromRole="personas" ToRole="personas_medico" />
+          <NavigationProperty Name="personas_paciente" Relationship="Self.FK_paciente_inherits_persona" FromRole="personas" ToRole="personas_paciente" />
+          <NavigationProperty Name="obras_sociales" Relationship="Self.personaobra_social" FromRole="personas" ToRole="obras_sociales" />
+        </EntityType>
+        <EntityType Name="personas_medico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="matricula" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="consultas" Relationship="Self.FK_medicoconsulta" FromRole="personas_medico" ToRole="consultas" />
+          <NavigationProperty Name="personas" Relationship="Self.FK_medico_inherits_persona" FromRole="personas_medico" ToRole="personas" />
+          <NavigationProperty Name="especialidades" Relationship="Self.medicoespecialidad" FromRole="personas_medico" ToRole="especialidades" />
+        </EntityType>
+        <EntityType Name="personas_paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="consultas" Relationship="Self.FK_pacienteconsulta" FromRole="personas_paciente" ToRole="consultas" />
+          <NavigationProperty Name="personas" Relationship="Self.FK_paciente_inherits_persona" FromRole="personas_paciente" ToRole="personas" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tipos_consultas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="precio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="consultas" Relationship="Self.FK_tipo_consultaconsulta" FromRole="tipos_consultas" ToRole="consultas" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo_usuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_direccionciudad">
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="1" />
+          <End Role="direcciones" Type="Self.direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="direcciones">
+              <PropertyRef Name="ciudad_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_medicoconsulta">
+          <End Role="personas_medico" Type="Self.personas_medico" Multiplicity="1" />
+          <End Role="consultas" Type="Self.consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas_medico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="consultas">
+              <PropertyRef Name="medico_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pacienteconsulta">
+          <End Role="personas_paciente" Type="Self.personas_paciente" Multiplicity="1" />
+          <End Role="consultas" Type="Self.consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas_paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="consultas">
+              <PropertyRef Name="paciente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tipo_consultaconsulta">
+          <End Role="tipos_consultas" Type="Self.tipos_consultas" Multiplicity="1" />
+          <End Role="consultas" Type="Self.consultas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipos_consultas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="consultas">
+              <PropertyRef Name="tipo_consulta_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personadatos_contacto">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="datos_contactos" Type="Self.datos_contactos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="datos_contactos">
+              <PropertyRef Name="persona_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personadireccion">
+          <End Role="direcciones" Type="Self.direcciones" Multiplicity="0..1" />
+          <End Role="personas" Type="Self.personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="direcciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personas">
+              <PropertyRef Name="direccion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_medico_inherits_persona">
+          <End Role="personas" Type="Self.personas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="personas_medico" Type="Self.personas_medico" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personas_medico">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_paciente_inherits_persona">
+          <End Role="personas" Type="Self.personas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="personas_paciente" Type="Self.personas_paciente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personas_paciente">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="medicoespecialidad">
+          <End Role="especialidades" Type="Self.especialidades" Multiplicity="*" />
+          <End Role="personas_medico" Type="Self.personas_medico" Multiplicity="*" />
+        </Association>
+        <Association Name="personaobra_social">
+          <End Role="obras_sociales" Type="Self.obras_sociales" Multiplicity="*" />
+          <End Role="personas" Type="Self.personas" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="consultoriosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ciudades" EntityType="Self.ciudades" />
+          <EntitySet Name="consultas" EntityType="Self.consultas" />
+          <EntitySet Name="datos_contactos" EntityType="Self.datos_contactos" />
+          <EntitySet Name="direcciones" EntityType="Self.direcciones" />
+          <EntitySet Name="especialidades" EntityType="Self.especialidades" />
+          <EntitySet Name="obras_sociales" EntityType="Self.obras_sociales" />
+          <EntitySet Name="personas" EntityType="Self.personas" />
+          <EntitySet Name="personas_medico" EntityType="Self.personas_medico" />
+          <EntitySet Name="personas_paciente" EntityType="Self.personas_paciente" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tipos_consultas" EntityType="Self.tipos_consultas" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <AssociationSet Name="FK_direccionciudad" Association="Self.FK_direccionciudad">
+            <End Role="ciudades" EntitySet="ciudades" />
+            <End Role="direcciones" EntitySet="direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_medicoconsulta" Association="Self.FK_medicoconsulta">
+            <End Role="personas_medico" EntitySet="personas_medico" />
+            <End Role="consultas" EntitySet="consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pacienteconsulta" Association="Self.FK_pacienteconsulta">
+            <End Role="personas_paciente" EntitySet="personas_paciente" />
+            <End Role="consultas" EntitySet="consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tipo_consultaconsulta" Association="Self.FK_tipo_consultaconsulta">
+            <End Role="tipos_consultas" EntitySet="tipos_consultas" />
+            <End Role="consultas" EntitySet="consultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personadatos_contacto" Association="Self.FK_personadatos_contacto">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="datos_contactos" EntitySet="datos_contactos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personadireccion" Association="Self.FK_personadireccion">
+            <End Role="direcciones" EntitySet="direcciones" />
+            <End Role="personas" EntitySet="personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_medico_inherits_persona" Association="Self.FK_medico_inherits_persona">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="personas_medico" EntitySet="personas_medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_paciente_inherits_persona" Association="Self.FK_paciente_inherits_persona">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="personas_paciente" EntitySet="personas_paciente" />
+          </AssociationSet>
+          <AssociationSet Name="medicoespecialidad" Association="Self.medicoespecialidad">
+            <End Role="especialidades" EntitySet="especialidades" />
+            <End Role="personas_medico" EntitySet="personas_medico" />
+          </AssociationSet>
+          <AssociationSet Name="personaobra_social" Association="Self.personaobra_social">
+            <End Role="obras_sociales" EntitySet="obras_sociales" />
+            <End Role="personas" EntitySet="personas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="consultoriosModelStoreContainer" CdmEntityContainer="consultoriosEntities">
+          <EntitySetMapping Name="ciudades">
+            <EntityTypeMapping TypeName="consultoriosModel.ciudades">
+              <MappingFragment StoreEntitySet="ciudades">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="denominacion" ColumnName="denominacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="consultas">
+            <EntityTypeMapping TypeName="consultoriosModel.consultas">
+              <MappingFragment StoreEntitySet="consultas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="medico_Id" ColumnName="medico_Id" />
+                <ScalarProperty Name="tipo_consulta_Id" ColumnName="tipo_consulta_Id" />
+                <ScalarProperty Name="paciente_Id" ColumnName="paciente_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="datos_contactos">
+            <EntityTypeMapping TypeName="consultoriosModel.datos_contactos">
+              <MappingFragment StoreEntitySet="datos_contactos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="email_primario" ColumnName="email_primario" />
+                <ScalarProperty Name="email_secundario" ColumnName="email_secundario" />
+                <ScalarProperty Name="tel_celular" ColumnName="tel_celular" />
+                <ScalarProperty Name="tel_fijo" ColumnName="tel_fijo" />
+                <ScalarProperty Name="persona_Id" ColumnName="persona_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="direcciones">
+            <EntityTypeMapping TypeName="consultoriosModel.direcciones">
+              <MappingFragment StoreEntitySet="direcciones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="piso" ColumnName="piso" />
+                <ScalarProperty Name="dpto" ColumnName="dpto" />
+                <ScalarProperty Name="ciudad_Id" ColumnName="ciudad_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="especialidades">
+            <EntityTypeMapping TypeName="consultoriosModel.especialidades">
+              <MappingFragment StoreEntitySet="especialidades">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="denominacion" ColumnName="denominacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="obras_sociales">
+            <EntityTypeMapping TypeName="consultoriosModel.obras_sociales">
+              <MappingFragment StoreEntitySet="obras_sociales">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="denominacion" ColumnName="denominacion" />
+                <ScalarProperty Name="plus" ColumnName="plus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personas">
+            <EntityTypeMapping TypeName="consultoriosModel.personas">
+              <MappingFragment StoreEntitySet="personas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="direccion_Id" ColumnName="direccion_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personas_medico">
+            <EntityTypeMapping TypeName="consultoriosModel.personas_medico">
+              <MappingFragment StoreEntitySet="personas_medico">
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personas_paciente">
+            <EntityTypeMapping TypeName="consultoriosModel.personas_paciente">
+              <MappingFragment StoreEntitySet="personas_paciente">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="consultoriosModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipos_consultas">
+            <EntityTypeMapping TypeName="consultoriosModel.tipos_consultas">
+              <MappingFragment StoreEntitySet="tipos_consultas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="consultoriosModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="medicoespecialidad" TypeName="consultoriosModel.medicoespecialidad" StoreEntitySet="medicoespecialidad">
+            <EndProperty Name="especialidades">
+              <ScalarProperty Name="Id" ColumnName="especialidad_Id" />
+            </EndProperty>
+            <EndProperty Name="personas_medico">
+              <ScalarProperty Name="Id" ColumnName="medico_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="personaobra_social" TypeName="consultoriosModel.personaobra_social" StoreEntitySet="personaobra_social">
+            <EndProperty Name="obras_sociales">
+              <ScalarProperty Name="Id" ColumnName="obra_social_Id" />
+            </EndProperty>
+            <EndProperty Name="personas">
+              <ScalarProperty Name="Id" ColumnName="persona_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
