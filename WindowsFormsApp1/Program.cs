@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
             //Inicia desde el formulario del log in
-            Application.Run(new login());
+            Application.Run(new principal());
         }
     }
 }

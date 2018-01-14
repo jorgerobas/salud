@@ -53,6 +53,7 @@ namespace WindowsFormsApp1
 
         }
 
+        
         private void button1_Click(object sender, EventArgs e)
         {
             string nombre = textBox1.Text; //La variable nombre guarda el nombre con el que el usuario intenta iniciar sesión

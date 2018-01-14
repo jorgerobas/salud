@@ -34,11 +34,11 @@ namespace Logica
             }
         }
 
-        //public Usuario obtenerUsuario(string nombreUsuario)
-        //{
-            //return ;
-        //}
-    
+        /*public Usuario obtenerUsuario(string nombreUsuario)
+        {
+            return ;
+        }
+    */
     }
 
    
