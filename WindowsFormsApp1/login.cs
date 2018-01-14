@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logica; //Agregué la referencia a la capa lógica para tener acceso al gestor de usuarios
 
 namespace WindowsFormsApp1
 {
@@ -45,11 +46,27 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
+        } //Botón salir de la aplicación
 
         private void login_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string nombre = textBox1.Text; //La variable nombre guarda el nombre con el que el usuario intenta iniciar sesión
+
+            if (Logica.gestorUsuarios.obtenerUsuario(nombre) == null) //chequea si el nombre que el usuario ingresó existe en la BD
+            {
+
+            }
+            else
+            {
+                //Mensaje de error en el inicio de sesión
+                MessageBox.Show("El usuario ingresado no existe", "Error en el inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                textBox1.Focus();
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) //MOSTRAR / OCULTAR CONTRASEÑA
