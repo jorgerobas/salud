@@ -33,5 +33,13 @@ namespace Logica
                 throw;  
             }
         }
+
+        //public Usuario obtenerUsuario(string nombreUsuario)
+        //{
+            //return ;
+        //}
+    
     }
+
+   
 }
