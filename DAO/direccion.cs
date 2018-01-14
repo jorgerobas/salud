@@ -12,12 +12,21 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class direccion
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public direccion()
+        {
+            this.persona = new HashSet<persona>();
+        }
+    
+        public int Id { get; set; }
+        public string calle { get; set; }
+        public Nullable<short> numero { get; set; }
+        public string piso { get; set; }
+        public Nullable<short> dpto { get; set; }
+        public int ciudad_Id { get; set; }
+    
+        public virtual ciudad ciudad { get; set; }
+        public virtual ICollection<persona> persona { get; set; }
     }
 }

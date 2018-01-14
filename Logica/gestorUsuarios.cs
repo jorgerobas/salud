@@ -16,21 +16,21 @@ namespace Logica
             {
                 using (consultoriosEntities dbContext = new consultoriosEntities())
                 {
-                    var Query = (from n in dbContext.usuarios
+                    var Query = (from n in dbContext.usuario
                                  select new Usuario
                                  {
                                      Id = n.Id,
-                                     nombre=n.nombre,
-                                     password=n.password,
-                                     tipo_usuario=n.tipo_usuario
-                                     
+                                     nombre = n.nombre,
+                                     password = n.password,
+                                     tipo_usuario = n.tipo_usuario
+
                                  }).ToList();
                     return Query;
                 }
             }
             catch (Exception)
             {
-                throw;  
+                throw;
             }
         }
     }

@@ -12,17 +12,17 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class consultas
+    public partial class tipo_consulta
     {
-        public int Id { get; set; }
-        public string precio { get; set; }
-        public string fecha { get; set; }
-        public int medico_Id { get; set; }
-        public int tipo_consulta_Id { get; set; }
-        public int paciente_Id { get; set; }
+        public tipo_consulta()
+        {
+            this.consulta = new HashSet<consulta>();
+        }
     
-        public virtual personas_medico personas_medico { get; set; }
-        public virtual personas_paciente personas_paciente { get; set; }
-        public virtual tipos_consultas tipos_consultas { get; set; }
+        public int Id { get; set; }
+        public string descripcion { get; set; }
+        public string precio { get; set; }
+    
+        public virtual ICollection<consulta> consulta { get; set; }
     }
 }

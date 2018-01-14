@@ -25,17 +25,16 @@ namespace DAO
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<ciudades> ciudades { get; set; }
-        public DbSet<consultas> consultas { get; set; }
-        public DbSet<datos_contactos> datos_contactos { get; set; }
-        public DbSet<direcciones> direcciones { get; set; }
-        public DbSet<especialidades> especialidades { get; set; }
-        public DbSet<obras_sociales> obras_sociales { get; set; }
-        public DbSet<personas> personas { get; set; }
-        public DbSet<personas_medico> personas_medico { get; set; }
-        public DbSet<personas_paciente> personas_paciente { get; set; }
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public DbSet<tipos_consultas> tipos_consultas { get; set; }
-        public DbSet<usuarios> usuarios { get; set; }
+        public DbSet<ciudad> ciudad { get; set; }
+        public DbSet<consulta> consulta { get; set; }
+        public DbSet<datos_contacto> datos_contacto { get; set; }
+        public DbSet<direccion> direccion { get; set; }
+        public DbSet<especialidad> especialidad { get; set; }
+        public DbSet<obra_social> obra_social { get; set; }
+        public DbSet<persona> persona { get; set; }
+        public DbSet<persona_medico> persona_medico { get; set; }
+        public DbSet<persona_paciente> persona_paciente { get; set; }
+        public DbSet<tipo_consulta> tipo_consulta { get; set; }
+        public DbSet<usuario> usuario { get; set; }
     }
 }

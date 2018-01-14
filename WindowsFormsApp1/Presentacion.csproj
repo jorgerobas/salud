@@ -80,10 +80,6 @@
       <Project>{bf1d4d40-e480-4e36-9012-87e5c9fabe3d}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Logica\Logica.csproj">
-      <Project>{e4bc8d46-13a3-440e-ae04-ab7994b4dd76}</Project>
-      <Name>Logica</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
