@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logica; //Agregué la referencia a la capa lógica para tener acceso al gestor de usuarios
+using Entidades;
 
 namespace WindowsFormsApp1
 {
@@ -23,23 +24,23 @@ namespace WindowsFormsApp1
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            textBox1.ForeColor = Color.Black;
+            txtUsuario.ForeColor = Color.Black;
 
             if (flag1)
             {
                 flag1 = false;
-                textBox1.Text = "";
+                txtUsuario.Text = "";
             }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            textBox2.ForeColor = Color.Black;
+            txtPassword.ForeColor = Color.Black;
 
             if (flag2)
             {
                 flag2 = false;
-                textBox2.Text = "";
+                txtPassword.Text = "";
             }
         }
 
@@ -56,17 +57,21 @@ namespace WindowsFormsApp1
         
         private void button1_Click(object sender, EventArgs e)
         {
-            string nombre = textBox1.Text; //La variable nombre guarda el nombre con el que el usuario intenta iniciar sesión
+            gestorUsuarios _gestorUsuarios = new gestorUsuarios();
+            string nombre = txtUsuario.Text; //La variable nombre guarda el nombre con el que el usuario intenta iniciar sesión
+            UsuarioDTO _usuario = new UsuarioDTO();
 
-            if (Logica.gestorUsuarios.obtenerUsuario(nombre) == null) //chequea si el nombre que el usuario ingresó existe en la BD
+            _usuario = _gestorUsuarios.ObtenerCuentaPorUsername(nombre);
+
+            if (_usuario != null) //chequea si el nombre que el usuario ingresó existe en la BD
             {
-
+                MessageBox.Show("se encontró el usuario: " + _usuario.nombre +" "+ _usuario.password +" "+ _usuario.tipo_usuario);
             }
             else
             {
                 //Mensaje de error en el inicio de sesión
                 MessageBox.Show("El usuario ingresado no existe", "Error en el inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                textBox1.Focus();
+                txtUsuario.Focus();
             }
         }
 
@@ -75,12 +80,12 @@ namespace WindowsFormsApp1
             if (checkBox1.Checked == true)
             {
                 checkBox1.Text = "Ocultar contraseña";
-                textBox2.UseSystemPasswordChar = false;
+                txtPassword.UseSystemPasswordChar = false;
             }
             else
             {
                 checkBox1.Text = "Mostrar contraseña";
-                textBox2.UseSystemPasswordChar = true;
+                txtPassword.UseSystemPasswordChar = true;
             }
         }
     }

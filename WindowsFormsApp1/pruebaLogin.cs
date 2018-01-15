@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show("El usuario es tipo" + _usuario.tipo_usuario);
+                MessageBox.Show("El usuario es tipo " + _usuario.tipo_usuario);
             }
 
         }

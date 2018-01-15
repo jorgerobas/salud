@@ -30,8 +30,8 @@ namespace WindowsFormsApp1
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pruebaLogin login = new pruebaLogin();
-            login.Show();
+            login _login = new login();
+            _login.Show();
         }
     }
 }

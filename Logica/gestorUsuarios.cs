@@ -10,7 +10,7 @@ namespace Logica
 {
     public class gestorUsuarios
     {
-        public List<UsuarioDTO> ListarUsuarios()
+        public List<UsuarioDTO> ListarUsuarios() //DEVUELVE UN LIST DE USUARIOS
         {
             try
             {
@@ -34,7 +34,7 @@ namespace Logica
             }
         }
 
-        public UsuarioDTO ObtenerCuentaPorUsername(string username)
+        public UsuarioDTO ObtenerCuentaPorUsername(string username) //BUSCA UN USUARIO POR "USERNAME": SI LO ENCUENTRA DEVUELVE EL OBJETO. sINO DEVUELVE NULL
         {
             try
             {
