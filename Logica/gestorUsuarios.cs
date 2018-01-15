@@ -10,14 +10,14 @@ namespace Logica
 {
     public class gestorUsuarios
     {
-        public List<Usuario> ListarUsuarios()
+        public List<UsuarioDTO> ListarUsuarios()
         {
             try
             {
                 using (consultoriosEntities dbContext = new consultoriosEntities())
                 {
                     var Query = (from n in dbContext.usuario
-                                 select new Usuario
+                                 select new UsuarioDTO
                                  {
                                      Id = n.Id,
                                      nombre = n.nombre,
@@ -34,11 +34,99 @@ namespace Logica
             }
         }
 
-        /*public Usuario obtenerUsuario(string nombreUsuario)
+        public UsuarioDTO ObtenerCuentaPorUsername(string username)
         {
-            return ;
+            try
+            {
+                using (consultoriosEntities dbContext = new consultoriosEntities())
+                {
+                    return (from n in dbContext.usuario
+                                   where n.nombre == username
+                                   select new UsuarioDTO
+                                   {
+                                       Id = n.Id,
+                                       nombre = n.nombre,
+                                       password = n.password,
+                                       tipo_usuario = n.tipo_usuario
+                                   }).SingleOrDefault();
+                
+                    
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }   
         }
-    */
+
+        public void AgregarUsuario (string nombre, string clave, string tipo)
+        {
+            try
+            {
+                using (consultoriosEntities dbContext = new consultoriosEntities())
+                {
+                    usuario entidad = new usuario();
+                    entidad.nombre = nombre;
+                    entidad.password = clave;
+                    entidad.tipo_usuario = tipo;
+                    dbContext.usuario.Add(entidad);
+                    dbContext.SaveChanges();
+                }
+                    
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        
+        public void ModificarUsuario (UsuarioDTO _Usuario)
+        {
+            try
+            {
+                using (consultoriosEntities dbContext = new consultoriosEntities())
+                {
+                    usuario Entidad = (from n in dbContext.usuario
+                                       where n.Id == _Usuario.Id
+                                       select n).FirstOrDefault();
+                    Entidad.nombre = _Usuario.nombre;
+                    Entidad.password = _Usuario.password;
+                    Entidad.tipo_usuario = _Usuario.tipo_usuario;
+                    dbContext.Entry(Entidad).CurrentValues.SetValues(Entidad);
+                    dbContext.SaveChanges();
+                }
+                    
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        
+        
+        public void EliminarUsuario (UsuarioDTO _Usuario)
+        {
+            try
+            {
+                using (consultoriosEntities dbContext = new consultoriosEntities())
+                {
+                    usuario Entidad = (from n in dbContext.usuario
+                                       where n.Id == _Usuario.Id
+                                       select n).FirstOrDefault();
+                    dbContext.usuario.Remove(Entidad);
+                    dbContext.SaveChanges();
+                }
+                
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+       
     }
 
    
