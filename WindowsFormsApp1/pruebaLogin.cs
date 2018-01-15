@@ -26,7 +26,14 @@ namespace WindowsFormsApp1
             UsuarioDTO _usuario = gestor.ObtenerCuentaPorUsername(txtUserName.Text);
 
                
-            
+            if (_usuario==null)
+            {
+                MessageBox.Show("El usuario o contraseña están incorrectos");
+            }
+            else
+            {
+                MessageBox.Show("El usuario es tipo" + _usuario.tipo_usuario);
+            }
 
         }
     }
