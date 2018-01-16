@@ -71,6 +71,9 @@
     <Compile Include="pruebaLogin.Designer.cs">
       <DependentUpon>pruebaLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="TextBoxAutoexplicativo.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="consultaUsuarios.resx">
       <DependentUpon>consultaUsuarios.cs</DependentUpon>
     </EmbeddedResource>

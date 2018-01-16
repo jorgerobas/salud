@@ -1,61 +1,131 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Entidades;
 using Logica; //Agregué la referencia a la capa lógica para tener acceso al gestor de usuarios
-using Entidades;
+using System;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
     public partial class login : Form
     {
 
-        bool flag1, flag2 = true; //VARIABLES BOOL PARA MANIPULAR LOS TEXTBOX
+      
 
         public login()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            txtUsuario.ForeColor = Color.Black;
-
-            if (flag1)
-            {
-                flag1 = false;
-                txtUsuario.Text = "";
-            }
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            txtPassword.ForeColor = Color.Black;
-
-            if (flag2)
-            {
-                flag2 = false;
-                txtPassword.Text = "";
-            }
-        }
+       
+    
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Esta acción cerrará el programa. ¿Confirma que desea salir?","Salir",MessageBoxButtons.YesNo)==DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
+               
         } //Botón salir de la aplicación
 
         private void login_Load(object sender, EventArgs e)
         {
+            txtPassword.UseSystemPasswordChar = true;
+            btnMostrarContraseña.Visible = false;
+            LimpiarCampos();
+            //txtUsuario.Text = "ingrese su usuario";
+            //txtUsuario.ForeColor = Color.Gray;
 
         }
 
         
         private void button1_Click(object sender, EventArgs e)
+        {
+            BorrarMensajesError();
+            ValidarCamposCompletos();
+
+            if (ValidarCamposCompletos())
+            {
+                ValidarUsuarioyClave();
+            }
+            else
+            {
+                MessageBox.Show("Debe completar los campos resaltados");           
+            }
+            
+        }
+
+     
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text=="")
+            {
+                btnMostrarContraseña.Visible = false;
+                errorProvider1.SetError(txtPassword, "Debe ingresar una clave de acceso.");
+            }
+            else
+            {
+                btnMostrarContraseña.Visible = true;
+                errorProvider1.SetError(txtPassword, "");
+            }
+        }
+
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text == "")
+                errorProvider1.SetError(txtUsuario, "debe escribir un nombre de usuario");
+            else
+                errorProvider1.SetError(txtUsuario, "");
+        }
+
+        private void btnMostrarContraseña_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = false;
+        }
+
+        private void btnMostrarContraseña_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private bool ValidarCamposCompletos()
+        {
+            bool completo = true;
+
+            if (txtUsuario.Text == "")
+            {
+                completo = false;
+                errorProvider1.SetError(txtUsuario, "debe ingresar un nombre de usuario");
+            }
+
+            if (txtPassword.Text == "")
+            {
+                completo = false;
+                errorProvider1.SetError(txtPassword, "debe ingresar un nombre de usuario");
+            }
+
+            return completo;     
+
+        }
+
+        private void BorrarMensajesError()
+        {
+            errorProvider1.SetError(txtPassword, "");
+            errorProvider1.SetError(txtUsuario, "");
+        }
+
+        private void LimpiarCampos()
+        {
+            txtPassword.Text = "";
+            txtUsuario.Text = "";
+            txtUsuario.Focus();
+            errorProvider1.SetError(txtUsuario, "");
+            errorProvider1.SetError(txtPassword, "");
+        }
+
+        private void ValidarUsuarioyClave()
         {
             gestorUsuarios _gestorUsuarios = new gestorUsuarios();
             string nombre = txtUsuario.Text; //La variable nombre guarda el nombre con el que el usuario intenta iniciar sesión
@@ -65,27 +135,28 @@ namespace WindowsFormsApp1
 
             if (_usuario != null) //chequea si el nombre que el usuario ingresó existe en la BD
             {
-                MessageBox.Show("se encontró el usuario: " + _usuario.nombre +" "+ _usuario.password +" "+ _usuario.tipo_usuario);
+                if (_usuario.password == txtPassword.Text)
+                    MessageBox.Show("ingreso correcto");
+                else
+                {
+                    MessageBox.Show("El usuario o contraseña ingresados son incorrectos.");
+                    LimpiarCampos();
+                }
+
             }
             else
             {
                 //Mensaje de error en el inicio de sesión
-                MessageBox.Show("El usuario ingresado no existe", "Error en el inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtUsuario.Focus();
+                MessageBox.Show("El usuario ingresado o contraseña ingresado son incorrectos.", "Error en el inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                LimpiarCampos();
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e) //MOSTRAR / OCULTAR CONTRASEÑA
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (checkBox1.Checked == true)
+            if (e.KeyChar==Convert.ToChar(Keys.Enter))
             {
-                checkBox1.Text = "Ocultar contraseña";
-                txtPassword.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                checkBox1.Text = "Mostrar contraseña";
-                txtPassword.UseSystemPasswordChar = true;
+                ValidarUsuarioyClave();
             }
         }
     }
