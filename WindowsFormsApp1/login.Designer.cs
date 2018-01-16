@@ -61,6 +61,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(363, 257);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnMostrarContraseña
             // 
@@ -68,7 +69,7 @@
             this.btnMostrarContraseña.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarContraseña.BackgroundImage")));
             this.btnMostrarContraseña.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMostrarContraseña.FlatAppearance.BorderSize = 0;
-            this.btnMostrarContraseña.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
+            this.btnMostrarContraseña.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnMostrarContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMostrarContraseña.ForeColor = System.Drawing.Color.Black;
             this.btnMostrarContraseña.ImageKey = "(ninguno)";
@@ -192,8 +193,13 @@
             this.ClientSize = new System.Drawing.Size(484, 391);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar sesíon";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.login_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.login_FormClosed);
             this.Load += new System.EventHandler(this.login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

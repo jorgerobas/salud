@@ -32,9 +32,13 @@ namespace WindowsFormsApp1
 
         private void principal_Load(object sender, EventArgs e)
         {
-            login _login = new login();
+            menuStrip1.Hide();
+            
+             login _login = new login();
             _login.MdiParent = this;
             _login.Show();
+            
+       
         }
     }
 }

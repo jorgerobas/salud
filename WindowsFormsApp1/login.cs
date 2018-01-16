@@ -20,16 +20,19 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Esta acción cerrará el programa. ¿Confirma que desea salir?","Salir",MessageBoxButtons.YesNo)==DialogResult.Yes)
+            this.Close();
+ 
+           /* if (MessageBox.Show("Esta acción cerrará el programa. ¿Confirma que desea salir?","Salir",MessageBoxButtons.YesNo)==DialogResult.Yes)
             {
                 this.Close();
                 Application.Exit();
-            }
+            }*/
                
         } //Botón salir de la aplicación
 
         private void login_Load(object sender, EventArgs e)
         {
+            
             txtPassword.UseSystemPasswordChar = true;
             btnMostrarContraseña.Visible = false;
             LimpiarCampos();
@@ -136,7 +139,10 @@ namespace WindowsFormsApp1
             if (_usuario != null) //chequea si el nombre que el usuario ingresó existe en la BD
             {
                 if (_usuario.password == txtPassword.Text)
+                {
                     MessageBox.Show("ingreso correcto");
+                    this.Hide();
+                }    
                 else
                 {
                     MessageBox.Show("El usuario o contraseña ingresados son incorrectos.");
@@ -158,6 +164,32 @@ namespace WindowsFormsApp1
             {
                 ValidarUsuarioyClave();
             }
+
+  
+        }
+
+
+
+        private void login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Esta acción cerrará el programa. ¿Confirma que desea salir?", "Salir", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                e.Cancel=false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
