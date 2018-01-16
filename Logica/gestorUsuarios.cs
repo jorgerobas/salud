@@ -59,6 +59,29 @@ namespace Logica
             }   
         }
 
+        public UsuarioDTO IniciarSesion(string username, string clave) //FUNCION INICIAR SESION
+        {
+            try
+            {
+                using (consultoriosEntities dbContext = new consultoriosEntities())
+                {
+                    return (from n in dbContext.usuario
+                            where n.nombre == username && n.password == clave
+                            select new UsuarioDTO
+                            {
+                                Id = n.Id,
+                                nombre = n.nombre,
+                                password = n.password,
+                                tipo_usuario = n.tipo_usuario
+                            }).SingleOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void AgregarUsuario (string nombre, string clave, string tipo)
         {
             try

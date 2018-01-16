@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnIngresar = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,8 +46,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSalir);
+            this.panel1.Controls.Add(this.btnIngresar);
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.txtUsuario);
             this.panel1.Controls.Add(this.label1);
@@ -72,43 +72,45 @@
             this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // button2
+            // btnSalir
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.ImageKey = "(ninguno)";
-            this.button2.Location = new System.Drawing.Point(204, 175);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 55);
-            this.button2.TabIndex = 4;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip2.SetToolTip(this.button2, "Cierra el programa");
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSalir.BackColor = System.Drawing.Color.Transparent;
+            this.btnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalir.BackgroundImage")));
+            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalir.FlatAppearance.BorderSize = 0;
+            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.ForeColor = System.Drawing.Color.Black;
+            this.btnSalir.ImageKey = "(ninguno)";
+            this.btnSalir.Location = new System.Drawing.Point(204, 175);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 55);
+            this.btnSalir.TabIndex = 4;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip2.SetToolTip(this.btnSalir, "Cierra el programa");
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
-            // button1
+            // btnIngresar
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.ImageKey = "(ninguno)";
-            this.button1.Location = new System.Drawing.Point(82, 175);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 55);
-            this.button1.TabIndex = 3;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.button1, "Presiones para iniciar sesión");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnIngresar.BackColor = System.Drawing.Color.Transparent;
+            this.btnIngresar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnIngresar.BackgroundImage")));
+            this.btnIngresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIngresar.FlatAppearance.BorderSize = 0;
+            this.btnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngresar.ForeColor = System.Drawing.Color.Black;
+            this.btnIngresar.ImageKey = "(ninguno)";
+            this.btnIngresar.Location = new System.Drawing.Point(82, 175);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(75, 55);
+            this.btnIngresar.TabIndex = 3;
+            this.btnIngresar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnIngresar, "Presiones para iniciar sesión");
+            this.btnIngresar.UseVisualStyleBackColor = false;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // txtPassword
             // 
@@ -120,7 +122,10 @@
             this.txtPassword.TabIndex = 2;
             this.txtPassword.Text = "Contraseña";
             this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
+            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
+            this.txtPassword.LostFocus += new System.EventHandler(this.txtPassword_LostFocus);
             // 
             // txtUsuario
             // 
@@ -131,7 +136,10 @@
             this.txtUsuario.Size = new System.Drawing.Size(198, 24);
             this.txtUsuario.TabIndex = 1;
             this.txtUsuario.Text = "Usuario";
-            this.txtUsuario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
+            this.txtUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyDown);
+            this.txtUsuario.Enter += new System.EventHandler(this.txtUsuario_Enter);
+            this.txtUsuario.LostFocus += new System.EventHandler(this.txtUsuario_LostFocus);
             // 
             // label1
             // 
@@ -174,8 +182,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;

@@ -77,7 +77,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "principal";
-            this.Text = "Form1";
+            this.Text = "Gestión de obras sociales";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
