@@ -31,15 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
             this.panel1 = new System.Windows.Forms.Panel();
-<<<<<<< HEAD
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.btnSalir = new System.Windows.Forms.Button();
-=======
             this.btnMostrarContraseña = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
->>>>>>> origin/master
             this.btnIngresar = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -54,15 +49,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-<<<<<<< HEAD
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Controls.Add(this.btnSalir);
-=======
             this.panel1.Controls.Add(this.btnMostrarContraseña);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button2);
->>>>>>> origin/master
             this.panel1.Controls.Add(this.btnIngresar);
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.txtUsuario);
@@ -112,27 +102,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Usuario";
             // 
-<<<<<<< HEAD
-            // btnSalir
-            // 
-            this.btnSalir.BackColor = System.Drawing.Color.Transparent;
-            this.btnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalir.BackgroundImage")));
-            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalir.FlatAppearance.BorderSize = 0;
-            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalir.ForeColor = System.Drawing.Color.Black;
-            this.btnSalir.ImageKey = "(ninguno)";
-            this.btnSalir.Location = new System.Drawing.Point(204, 175);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 55);
-            this.btnSalir.TabIndex = 4;
-            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip2.SetToolTip(this.btnSalir, "Cierra el programa");
-            this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
-=======
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
@@ -151,21 +120,14 @@
             this.toolTip2.SetToolTip(this.button2, "Cierra el programa");
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
->>>>>>> origin/master
             // 
             // btnIngresar
             // 
             this.btnIngresar.BackColor = System.Drawing.Color.Transparent;
             this.btnIngresar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnIngresar.BackgroundImage")));
             this.btnIngresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-<<<<<<< HEAD
-            this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnIngresar.FlatAppearance.BorderSize = 0;
-            this.btnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-=======
             this.btnIngresar.FlatAppearance.BorderSize = 0;
             this.btnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGreen;
->>>>>>> origin/master
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngresar.ForeColor = System.Drawing.Color.Black;
             this.btnIngresar.ImageKey = "(ninguno)";
@@ -176,11 +138,7 @@
             this.btnIngresar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.btnIngresar, "Presiones para iniciar sesión");
             this.btnIngresar.UseVisualStyleBackColor = false;
-<<<<<<< HEAD
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
-=======
             this.btnIngresar.Click += new System.EventHandler(this.button1_Click);
->>>>>>> origin/master
             // 
             // txtPassword
             // 
@@ -192,13 +150,7 @@
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
-<<<<<<< HEAD
-            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
-            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
-            this.txtPassword.LostFocus += new System.EventHandler(this.txtPassword_LostFocus);
-=======
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
->>>>>>> origin/master
             // 
             // txtUsuario
             // 
@@ -208,15 +160,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(198, 24);
             this.txtUsuario.TabIndex = 1;
-<<<<<<< HEAD
-            this.txtUsuario.Text = "Usuario";
             this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
-            this.txtUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyDown);
-            this.txtUsuario.Enter += new System.EventHandler(this.txtUsuario_Enter);
-            this.txtUsuario.LostFocus += new System.EventHandler(this.txtUsuario_LostFocus);
-=======
-            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
->>>>>>> origin/master
             // 
             // label1
             // 
@@ -267,14 +211,6 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-<<<<<<< HEAD
-        private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.CheckBox checkBox1;
-=======
->>>>>>> origin/master
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.Button button2;
